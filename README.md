@@ -1,34 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Phaser on Next.js Template Project
 
-## Getting Started
+[Phaser](https://phaser.io) を [Next.js](https://nextjs.org) の Pages Router で使うためのテンプレートです。
 
-First, run the development server:
+## 開発
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### システム要件
+
+- [Node.js 18.18](https://nodejs.org) 以上
+
+### 依存関係のインストール
+
+```shell
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 開発環境の実行
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+```shell
+npm run dev
+```
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### ビルド
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+```shell
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## SPA
 
-## Learn More
+テンプレートの設定では Next.js は SSR で実行されます。
+SPA としてビルドする場合は `next.config.ts` を編集してください。
 
-To learn more about Next.js, take a look at the following resources:
+```typescript
+import type { NextConfig } from "next";
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+const nextConfig: NextConfig = {
+  reactStrictMode: true,
+  output: "export", // 追加
+  distDir: "out", // 追加
+};
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+export default nextConfig;
+```
+
+```shell
+# SPAとしてビルド
+npm run build
+# outディレクトリに出力した成果物を実行
+npx serve out
+```
+
+## フォーマットと静的解析
+
+フォーマットと静的解析には [Biome](https://biomejs.dev) を使用しています。
+ルールの変更は `biome.json` を編集してください。
