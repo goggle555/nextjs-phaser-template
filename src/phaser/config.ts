@@ -4,8 +4,9 @@ export const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
   backgroundColor: "#808080",
   scale: {
-    width: 800,
-    height: 600,
+    mode: Phaser.Scale.RESIZE,
+    width: window.innerWidth,
+    height: window.innerHeight,
   },
   physics: {
     default: "arcade",
