@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 function generateTitle(template: string, title?: string) {
-  if (title !== null) {
+  if (title !== undefined) {
     return `${title} | ${template}`;
   }
 
