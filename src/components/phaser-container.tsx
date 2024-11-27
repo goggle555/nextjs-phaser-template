@@ -8,7 +8,10 @@ export default function PhaserContainer() {
   useEffect(() => {
     if (!ref.current) return;
 
-    new Phaser.Game({ ...config, parent: ref.current });
-  });
+    const game = new Phaser.Game({ ...config, parent: ref.current });
+
+    return () => game.destroy(true);
+  }, []);
+
   return <div ref={ref} />;
 }
