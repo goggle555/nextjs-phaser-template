@@ -2,7 +2,7 @@ import { HeadTemplate } from "@/components/head-template";
 import dynamic from "next/dynamic";
 import styles from "./index.module.css";
 
-const PhaserContainer = dynamic(import("@/components/phaser-container"), {
+const PhaserContainer = dynamic(() => import("@/components/phaser-container"), {
   ssr: false,
 });
 
